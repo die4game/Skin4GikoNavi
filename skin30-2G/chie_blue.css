@@ -1,0 +1,19 @@
+@charset ÅeShift_JISÅå;
+/* ÉäÉìÉN */
+a{color:#000;}
+dt a        {border:1px solid #EEE;}
+dt.new a    {border:1px solid gainsboro;}
+dt a:active {color:#F00; background-color:#FDD; border-color:#F44;}
+dt a:hover  {color:#F00; background-color:#FDD; border-color:#F44;}
+
+dd a:link   {color:#06559B;}
+dd a:visited{color:#669;}
+dd a:active {color:#F55; background-color:#FDD;}
+dd a:hover  {color:#F55; background-color:#FDD;}
+
+/* dt */
+dt      {background-color: #EEE;}
+dt.new  {background-color:gainsboro;}
+
+/* ãtéQè∆ì‡ïî */
+.refResult dt a{color:#000;text-decoration:none}
