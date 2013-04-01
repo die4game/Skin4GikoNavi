@@ -1,10 +1,11 @@
-@charset ‘Shift_JIS′;
 body{overflow-x:hidden}
 /* リンク横ボタン */
 input,button{
- font-family:"Terminal";
+ font-family:"Meiryo";
  font-size:8px;
- margin:0px 2px 2px 4px;
+ line-height: 6px;
+ margin: 2px;
+ padding-top: 6px;
  border:1px solid #BCB5B5;
 }
 /* サムネイル */

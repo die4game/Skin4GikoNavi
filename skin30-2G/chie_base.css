@@ -1,4 +1,3 @@
-@charset eShift_JISŒ;
 /* ‘S‘Ì */
 * {
     font-family:"‚l‚r ‚oƒSƒVƒbƒN"
@@ -79,10 +78,10 @@ dd a{line-height:1.1}
 
 /* ƒ{ƒ^ƒ“ */
 input,button{ /*‚±‚±‚Å‚Ìw’è‚Íimage.css‚Åã‘‚«‚³‚ê‚é*/
- font-family:"Terminal";
+ /*font-family:"Terminal";
  font-size:8px;
  margin:2px;
- border:1px solid #BCB5B5;
+ border:1px solid #BCB5B5;*/
 }
 #controlPanel{
  position:absolute;

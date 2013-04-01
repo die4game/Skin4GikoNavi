@@ -114,7 +114,8 @@ function changePanel() {
 }
 
 // LOADƒ{ƒ^ƒ“
-  function insButton(a, hRH) {
+function insButton(a, hRH) {
+  if (!a.nextSibling) return;
   if (a.nextSibling.tagName != 'INPUT' && a.parentElement.tagName != 'DIV') {
     if (imageExt2(a.href)) {
       var nHTML = '<input type="button" value="LOAD" onClick=\'loadImage(this,"' + a.href + '");blur()\'>';

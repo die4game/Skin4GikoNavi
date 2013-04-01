@@ -609,6 +609,37 @@ function changeSearchView() {
 }
 
 
+//==========全板スレタイ検索
+function allBoardSearch (arg) {
+  //window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+arg,"_parent");
+  var allBoardSearchWindow = showModelessDialog("",window, 'dialogWidth:480px;dialogHeight:10px;dialogTop:10px;dialogLeft:10px;');
+  var nWin =
+  '<html>'+
+    '<head>'+
+      '<script type="text/javascript">' +
+        'function submitEvent() {' +
+          'var fo = document.forms[0];' +
+          'window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+fo.STR.value,"_blank")'+
+        '}' +
+      '</script>' +
+      '<style>'+
+        'h1 {font-size:small;margin:1ex;}'+
+        'form {margin:1ex 1ex 0 2ex;}'+
+      '</style>'+
+    '</head>'+
+    '<body>'+
+      '<h1>Find.2ch</h1>'+
+      '<form onsubmit="submitEvent();return false;">'+
+        '<input name="STR" type="text" size="60" value="'+arg+'">' +
+        '<input type="submit" value="検索" onsubmit="submitEvent();return false;">'+
+      '</form>' +
+    '</body>'+
+  '</html>';
+  allBoardSearchWindow.document.write(nWin);
+  allBoardSearchWindow.document.forms[0].elements[0].select();
+  //"http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+arg
+}
+
 //==========単語検索
 function findIt(arg) {
   createSearchPanel(arg);
@@ -672,7 +703,7 @@ function createSearchPanel(arg) {
           '<table width="100%">' +
             '<tr>' +
               '<td valign="top" colspan="3">' +
-                '<label for="word">検索文字列：</label>' +
+                '<label for="word">検索文字列：</label><br/>' +
                 '<input type="text" name="word" id="word" size="30" value="' + word + '" tabindex="0">' +
                 '<br>' +
               '</td>' +
@@ -754,6 +785,7 @@ function createSearchPanel(arg) {
 
 // 検索処理メイン
 function searchWord() {
+  word = word.replace(/^\s*|\s*$/g, "");
   if (!word) {
     return
   }

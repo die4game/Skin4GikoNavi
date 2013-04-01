@@ -7,6 +7,7 @@
 //chie_search::getID
 //chie_search::searchPerson(obj)
 //chie_search::searchRef(obj)
+//chie_search::findIt(arg)
 //chie_popup::tohan
 //外部変数
 //giko_cus::anchorHead
@@ -235,6 +236,7 @@ function panelOver() {
 
 // IMG
 function imgCommand(mode, s) {
+  if (fp) fp.style.visibility = "hidden";
   if (!waited) {
     var nHTML =
       '<div id="command" onclick="clearCommand()"><input type="button" onclick="allImageLoad(\'all\')" value="全レス一括読込"><br><input type="button" onclick="allImageLoad(\'new\')" value="新レス一括読込"><br><input type="button" onclick="removeError()" value="Error画像削除"><br><input type="button" onclick="changeMode()" value="モード切替"></div>';
@@ -246,9 +248,13 @@ function imgCommand(mode, s) {
 }
 
 function fndCommand(mode, s) {
+  if (fp) fp.style.visibility = "hidden";
   if (!waited) {
-    findIt(document.selection.createRange().text);
-    event.cancelBubble = true;
+    var nHTML =
+    '<div id="command" onclick="clearCommand()"><input type="button" onclick="findIt(document.selection.createRange().text)" value="スレ内検索"><br><a href="http://find.2ch.net/?STR=\'+encodeURI(document.selection.createRange().text)+\'"><input type="button" onclick="allBoardSearch(document.selection.createRange().text)" value="全板検索"></a></div>';
+    event.srcElement.parentElement.insertAdjacentHTML('beforeEnd', nHTML);
+    waited = true;
+    //event.cancelBubble = true;
   } else {
     clearCommand();
   }
