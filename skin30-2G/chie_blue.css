@@ -1,4 +1,6 @@
 @charset ÅeShift_JISÅå;
+/* body */
+body {background-color: whitesmoke;}
 /* ÉäÉìÉN */
 a{color:#000;}
 dt a        {border:1px solid #EEE;}
@@ -14,6 +16,12 @@ dd a:hover  {color:#F55; background-color:#FDD;}
 /* dt */
 dt      {background-color: #EEE;}
 dt.new  {background-color:gainsboro;}
+
+/* dd */
+dd      {background-color: whitesmoke;}
+
+/* Footer */
+#sizeinfo {background-color: whitesmoke;}
 
 /* ãtéQè∆ì‡ïî */
 .refResult dt a{color:#000;text-decoration:none}
