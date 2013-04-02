@@ -25,7 +25,11 @@ var highlightColor = new Array("#ffff66", "#a0ffff", "#99ff99", "#ff9999", "#ff6
 
 //==========以下はスクリプト本文ですよ。
 // イベントハンドラ：onClick,onScroll,onMousemove
-// 外部関数：addAnchor,checkAnchor,tohan,searchPopup
+// 外部関数
+//addAnchor
+//giko_cus::checkAnchor(href)
+//tohan
+//searchPopup
 //chie_popup::returnString(num)
 // 外部変数：anchorHead,browser,fp
 // 逆参照の特徴：イベント発生DTに対応するDD下に、DL-DT-DD構造を作成する。
@@ -324,6 +328,7 @@ function searchPerson(obj) {
   } else {
     return;
   }
+  if (thisDT.parentElement.parentElement.id == "popupBase") return;
   if (!thisDT.rel) {
     var c = selectColor("res");
     if (!c) return;
@@ -623,9 +628,11 @@ function allBoardSearch (arg) {
         '}' +
       '</script>' +
       '<style>'+
+        '* {background-color:whitesmoke;}'+
         'h1 {font-size:small;margin:1ex;}'+
         'form {margin:1ex 1ex 0 2ex;}'+
       '</style>'+
+      '<title>全板スレタイ検索</title>'+
     '</head>'+
     '<body>'+
       '<h1>Find.2ch</h1>'+

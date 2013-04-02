@@ -2,7 +2,9 @@
 //イベントハンドラ定義
 //外部関数
 //giko_cus::loadtime
+//giko_cus::checkAnchor(href)
 //chie_image::allImageLoad
+//chie_image::insButton
 //chie_search::setHash
 //chie_search::getID
 //chie_search::searchPerson(obj)
@@ -116,6 +118,12 @@ function mouseOverEvent() {
     }
     if (checkAnchor(e.href) == 2) {
       insButton(e);
+      return;
+    } else if (checkAnchor(e.href) == 3) {
+      insYouTube(e,3);
+      return;
+    } else if (checkAnchor(e.href) == 4) {
+      insYouTube(e,4);
       return;
     } else if (checkAnchor(e.href) == 0) { // 逆参照ポップアップ
       if (e.href.match(/menu:/)) {// && event.shiftKey) {alert("gyaku");
@@ -290,13 +298,17 @@ function copyMenu() {
   if (document.getElementById("context")) {
     document.getElementById("context").removeNode(true);
   }
-  var nHTML = '<div id="context" name="' + e.innerText +
-    '"><div onclick="copyText(\'name\')" onmouseover="colorChange()" onmouseout="colorChange()">名前をコピー</div><div onclick="copyText(\'id\')" onmouseover="colorChange()" onmouseout="colorChange()">IDをコピー</div></div>';
+  var nHTML = '<div id="context" name="' + e.innerText + '">'+
+    '<div onclick="copyText(\'name\')" onmouseover="colorChange()" onmouseout="colorChange()">名前をコピー</div>'+
+    '<div onclick="copyText(\'id\')" onmouseover="colorChange()" onmouseout="colorChange()">IDをコピー</div>'+
+    '<div onclick="changeAAmode()" onmouseover="colorChange()" onmouseout="colorChange()">AAモード</div>'+
+  '</div>';
   document.body.insertAdjacentHTML("afterBegin", nHTML);
   var context = document.getElementById("context");
   context.style.pixelLeft = document.body.scrollLeft + ex
   context.style.pixelTop = document.body.scrollTop + ey;
   context.style.visibility = "visible";
+  context.style.zIndex = 10;
 }
 
 function colorChange() {
@@ -329,6 +341,22 @@ function copyText(target) {
   event.srcElement.parentElement.removeNode(true);
 }
 
+//AAモード
+function changeAAmode () {
+  var num = event.srcElement.parentElement.name;
+  var obj = getDTfromAnc(num);
+  var aamodeWS = obj.nextSibling.style.whiteSpace;
+  var aamodeZM = obj.nextSibling.style.zoom;
+  if (aamodeWS == "nowrap" && aamodeZM == 0.8) {
+    obj.nextSibling.style.removeAttribute("whiteSpace");
+    obj.nextSibling.style.removeAttribute("zoom");
+    document.body.style.removeAttribute("overflowX");
+  } else {
+    obj.nextSibling.style.whiteSpace = "nowrap";
+    obj.nextSibling.style.zoom = 0.8;
+    document.body.style.overflowX = "auto";
+  }
+}
 
 //=========DoubleClick処理→defaultPopup()
 document.ondblclick = defaultPopup;

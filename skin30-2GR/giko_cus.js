@@ -26,6 +26,10 @@ function checkAnchor(href) {
     return (1)
   } else if (href.match(/menu:|be:|read\.cgi|\.2ch\.net\/.*\/kako/)) {
     return (0)
+  } else if (href.match(/http:\/\/www.youtube.com\/watch\?/)) {//http://www.youtube.com/watch?v=PmTtyQ6HAkM
+    return (3)
+  } else if (href.match(/http:\/\/youtu.be\/\w+/)) {//http://youtu.be/PmTtyQ6HAkM
+    return (4)
   } else {
     return (2)
   }

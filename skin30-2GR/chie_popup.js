@@ -7,10 +7,10 @@
 //==========CSSの出力
 var nCSS = ''
 nCSS += '#popupBase{font-size:90%;}'; //フォントサイズの指定
-nCSS += '#popupBase{position:absolute;width:100%;height:100%;z-index:7}';
+nCSS += '#popupBase{position:absolute;width:100%;height:100%;z-index:7;}';
 nCSS +=
-  '#popupBase dl{position:absolute; background-color:window; border:outset 1px infobackground; overflow-y:auto; z-index:5; border-top:none}';
-nCSS += '#popupBase dt span{float:none; margin-left:1em;}';
+  '#popupBase dl{position:absolute; background-color:whitesmoke; border:outset 1px infobackground; overflow-y:auto; z-index:5; border-top:none}';
+//nCSS += '#popupBase dt span{float:none; margin-left:1em;}';
 nCSS += '#popupBase dd{margin:auto 1em}';
 document.write('<style type="text/css">' + nCSS + '</style>\n');
 
@@ -160,6 +160,7 @@ function popup(inner) {
     document.body.insertAdjacentHTML('afterBegin', '<div id="popupBase"></div>');
     pb = document.getElementById("popupBase")
   }
+  pb.style.zIndex = 7;
   //要素の作成
   var parent = event.srcElement.parentElement;
   //var aNum= (parent.tagName!="DD") ? parent.firstChild.sourceIndex : parent.previousSibling.firstChild.innerText; // DD以外＝名前欄、画像、ID検索
@@ -217,6 +218,7 @@ function removePopup(popid) {
     while (pb.lastChild) {
       pb.lastChild.removeNode(true)
     }
+    pb.style.zIndex = -1;
   }
 }
 

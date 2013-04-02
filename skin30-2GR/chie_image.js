@@ -151,7 +151,41 @@ function insButton(a, hRH) {
     return;
   }
 }
-
+// YouTubeをインライン展開するボタンを挿入
+function insYouTube (a,flg) {
+  if (a.nextSibling.tagName == 'INPUT' || a.parentElement.tagName == 'DIV') return false;
+  var regex;
+  var v;
+  switch (flg) {
+  case 3:
+    regex = /v=(\w+)/;
+    break;
+  case 4:
+    regex = /(\w+)\/?$/;
+    break;
+  }
+  if (!regex.test(a.href)) return false;
+  v = regex.exec(a.href)[1];
+  a.insertAdjacentHTML('AfterEnd',
+    '<input type="button" value="LOAD" onClick=\'openYouTube(this,"' + v + '");blur()\'>');
+}
+// YouTubeを展開トグル
+function openYouTube (btn, v) {
+  if (!btn || !v) return false;
+  switch (btn.value) {
+  case "LOAD":
+    btn.insertAdjacentHTML('AfterEnd',
+    '<br/><embed src="http://www.youtube.com/v/' + v +
+    '&rel=0&theme=light&hd=1&autohide=1&color=white&rel=0" type="application/x-shockwave-flash" width="480" height="270">' +
+    '</embed><br/>');
+    btn.value = 'CLOSE';
+    break;
+  case "CLOSE":
+    btn.parentElement.removeChild(btn.nextSibling);
+    btn.value = 'LOAD';
+    break;
+  }
+}
 // 画像読込
 function loadImage(btn, href) {
   if (!panel) {
