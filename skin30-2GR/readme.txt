@@ -1,14 +1,14 @@
-ƒMƒRƒiƒr—pƒXƒLƒ“uskin30-2GRv
+ã‚®ã‚³ãƒŠãƒ“ç”¨ã‚¹ã‚­ãƒ³ã€Œskin30-2GRã€
 
-“Á’¥
-Eskin30-2G‚Ì‰ü‘¢”Å
-EYouTube“®‰æ‚ÌƒCƒ“ƒ‰ƒCƒ““WŠJ
-E‘I‘ðƒeƒLƒXƒg‚Å‘S”ÂŒŸõ¨ie‚Ö
-EƒNƒƒXƒhƒƒCƒ“‘Îô(‹øŽI’Ê‚µ‚ÄƒXƒNƒŠƒvƒgƒIƒt‚Ìƒy[ƒW‚ðƒQƒbƒg)
-EƒOƒŒ[ŒnƒfƒUƒCƒ“
-EAA•\Ž¦ƒ‚[ƒh(nowrap&zoom~0.8&xŽ²scroll)
-EƒoƒO‚Á‚Û‚¢“®ì’×‚µ
+ç‰¹å¾´
+ãƒ»skin30-2Gã®æ”¹é€ ç‰ˆ
+ãƒ»YouTubeå‹•ç”»ã®ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³å±•é–‹
+ãƒ»é¸æŠžãƒ†ã‚­ã‚¹ãƒˆã§å…¨æ¿æ¤œç´¢â†’ieã¸
+ãƒ»ã‚¯ãƒ­ã‚¹ãƒ‰ãƒ¡ã‚¤ãƒ³å¯¾ç­–(ä¸²é¯–é€šã—ã¦ã‹ã¤ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚ªãƒ•ã«ã—ãŸãƒšãƒ¼ã‚¸ã‚’ã‚²ãƒƒãƒˆ)
+ãƒ»ã‚°ãƒ¬ãƒ¼ç³»ãƒ‡ã‚¶ã‚¤ãƒ³
+ãƒ»AAè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰(nowrap&zoomÃ—0.8&xè»¸scroll)
+ãƒ»ãƒã‚°ã£ã½ã„å‹•ä½œæ½°ã—
 
-“™
+ç­‰
 
 2013/Apr./3

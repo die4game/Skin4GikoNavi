@@ -328,7 +328,7 @@ function searchPerson(obj) {
   } else {
     return;
   }
-  if (thisDT.parentElement.parentElement.id == "popupBase") return;
+  if (thisDT.parentElement && thisDT.parentElement.parentElement.id == "popupBase") return;
   if (!thisDT.rel) {
     var c = selectColor("res");
     if (!c) return;
@@ -342,13 +342,13 @@ function searchPerson(obj) {
       foundRes[c].word = "ID:" + reg;
       for (i in foundRes[c]) {
         var dt = getDTfromAnc(foundRes[c][i]);
-        toggleResColor(dt, c);
+        toggleResColor(dt, c, true);
         //逆参照内の着色
         for (var key in refResultHash) {
           dt = refResultHash[key].nextSibling.getElementsByTagName("DT");
             for (var j=0; j<dt.length; j++) {
             if (dt[j].firstChild.firstChild.innerHTML == foundRes[c][i]) {
-              toggleResColor(dt[j], c);
+              toggleResColor(dt[j], c, true);
             }
           }
         }
@@ -362,7 +362,7 @@ function searchPerson(obj) {
       for (var i = l; i--;) {
         var dt = us[i].parentElement.parentElement;
         if (regName.test(us[i].innerText)) {
-          toggleResColor(dt, c);
+          toggleResColor(dt, c, true);
           if (dt.parentElement.className != "refResult") {
             foundRes[c].unshift(dt.firstChild.firstChild.innerText);
           }
@@ -450,13 +450,13 @@ function clearColor(type, color) {
         if (event.srcElement.value == "DEL") {
           removeRes(getDTfromAnc(cHash[i][j]))
         } else {
-          toggleResColor(getDTfromAnc(cHash[i][j]))
+          toggleResColor(getDTfromAnc(cHash[i][j]), color, false)
           //逆参照内の着色
           for (var key in refResultHash) {
             dt = refResultHash[key].nextSibling.getElementsByTagName("DT");
               for (var k=0; k<dt.length; k++) {
               if (dt[k].firstChild.firstChild.innerHTML == cHash[i][j]) {
-                toggleResColor(dt[k]);
+                toggleResColor(dt[k], color, false);
               }
             }
           }
@@ -494,31 +494,34 @@ function clearColor(type, color) {
 }
 
 // レス色トグル
-function toggleResColor(dt, c) {
-  if (!dt) {
-    return
-  } // for-inで送られる番号以外のobjなら終了
-  if (c) {
-    dt.rev = dt.style.backgroundColor;
+function toggleResColor(dt, c, flg) {
+  var revArray;
+  if (!dt) return; // for-inで送られる番号以外のobjなら終了
+  if (flg) {
+    dt.rev = (dt.rev ? dt.rev: "")+ " " + dt.style.backgroundColor;
     dt.rel = "colored";
-    dt.id = "COLOR" + c.replace(/#/, "");
+    //dt.className += " COLOR" + c.replace(/#/, "");
     dt.style.backgroundColor = c;
   } else {
-    dt.style.backgroundColor = dt.rev;
-    if (dt.id.match(/COLOR/)) {
-      dt.removeAttribute("id")
-    } //else{alert("dtにCOLOR***以外のid（"+dt.id+"）が設定されています")}
-    dt.removeAttribute("rev");
-    dt.removeAttribute("rel");
+    if (dt.style.backgroundColor == c) {
+      revArray = dt.rev? dt.rev.split(" "): [];
+      dt.style.backgroundColor = revArray.pop();
+      dt.rev = revArray.join(" ");
+      //dt.className = dt.className.replace( /\sCOLOR\w+$/, "");
+      dt.rel = dt.rev? "colored": "";
+    } else {
+        dt.rev = dt.rev.replace(c, "").replace(/\s{2,}/," ");
+      //dt.className = dt.className.replace(" COLOR"+c.replace(/#/, ""), "");
+    }
   }
 }
 // 逆参照内トグル
-function toggleResColor_Ref(dt, c) {
+/*function toggleResColor_Ref(dt, c) {
   if (!dt) {
     return
   } // for-inで送られる番号以外のobjなら終了
     dt.style.backgroundColor = c;
-}
+}*/
 
 // 検索結果に基づき消去
 function removeRes(dt) {
@@ -624,7 +627,8 @@ function allBoardSearch (arg) {
       '<script type="text/javascript">' +
         'function submitEvent() {' +
           'var fo = document.forms[0];' +
-          'window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+fo.STR.value,"_blank")'+
+          'window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+fo.STR.value,"_blank");'+
+          'window.close();'+
         '}' +
       '</script>' +
       '<style>'+
@@ -929,6 +933,7 @@ function setHighlight(reg) {
 var refResultHash={}, rrhnum=0;
 //==========逆参照
 function searchRef(obj) {
+  if ( !obj.firstChild.firstChild) return;
   if (!obj.name || obj.name.search(/referred/)<0) {
     var num = obj.firstChild.firstChild.innerText;
     if (refHash[num]) {
