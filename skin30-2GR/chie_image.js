@@ -158,10 +158,10 @@ function insYouTube (a,flg) {
   var v;
   switch (flg) {
   case 3:
-    regex = /v=(\w+)/;
+    regex = /v=([\w\-\.\~]+)/;
     break;
   case 4:
-    regex = /(\w+)\/?$/;
+    regex = /([\w\-\.\~]+)\/?$/;
     break;
   }
   if (!regex.test(a.href)) return false;
