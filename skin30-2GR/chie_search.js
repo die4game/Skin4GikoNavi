@@ -106,7 +106,11 @@ function setHash() {
   var l = Math.min(dts.length, dds.length);
   var lastNum = l ? parseInt(dts[l - 1].firstChild.innerText) : 0; //lastNumにスレのサイズを取得
   if (isNaN(lastNum) && l > 1) {
-    lastNum = parseInt(dts[l - 2].firstChild.firstChild.innerText)
+    for (var i = 2; i < l; i++) {
+      lastNum = dts[l - i].firstChild.firstChild;
+      if (lastNum) break;
+    }
+    lastNum = parseInt(lastNum.innerText)
   } //Footerありなら一つ前 lastNumに最終レス 番号を取得
   if (l == 0 || lastNum <= setEndNum) {
     return

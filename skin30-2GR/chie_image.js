@@ -124,15 +124,12 @@ function insButton(a, hRH) {
         '<input type="button" value="VIEW" onClick=\'changeView("swf","' + a.href + '");blur()\'>';
     } else {
       var ahref = (hRH) ? hRH : a.href;
-      var xhref = 'http://die4game.wkeya.com/ba-simple-proxy.php?mode=native&url=';
       if (ahref.match(/^javascript:.*'(.*)'.*/)) {
         ahref = RegExp.$1 + document.getElementsByName("ThreadURL")[0].content;
         a.href = ahref
       }
-      var nHTML = '<input type="button" value="VIEW" onClick=\'changeView("html","' + ahref + '");blur()\'>' +
-        '<input type="button" value="XV" onClick=\'changeView("html","' + xhref + ahref + '");blur()\'>' +
-        '<input type="button" value="CHK" onClick=\'changeView("html","http://www.aguse.jp/?url=' + ahref +
-        '");blur()\'>';
+      var nHTML = '<input type="button" value="CHK" onClick=\'changeView("html","http://www.aguse.jp/?url=' +
+        ahref + '");blur()\'>';
     }
     a.insertAdjacentHTML('AfterEnd', nHTML);
   }
