@@ -623,7 +623,8 @@ function changeSearchView() {
 
 //==========全板スレタイ検索
 function allBoardSearch (arg) {
-  //window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+arg,"_parent");
+  // http://www.google.co.jp/cse/publicurl?cx=011159213634437911283:e3xlgrxpdpg&q=
+  // http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR=
   var allBoardSearchWindow = showModelessDialog("",window, 'dialogWidth:480px;dialogHeight:10px;dialogTop:10px;dialogLeft:10px;');
   var nWin =
   '<html>'+

@@ -350,10 +350,14 @@ function changeAAmode () {
   if (aamodeWS == "nowrap" && aamodeZM == 0.8) {
     obj.nextSibling.style.removeAttribute("whiteSpace");
     obj.nextSibling.style.removeAttribute("zoom");
+    obj.nextSibling.style.removeAttribute("fontSize");
+    obj.nextSibling.style.removeAttribute("fontFamily");
     document.body.style.removeAttribute("overflowX");
   } else {
     obj.nextSibling.style.whiteSpace = "nowrap";
     obj.nextSibling.style.zoom = 0.8;
+    obj.nextSibling.style.fontSize = "16px";
+    obj.nextSibling.style.fontFamily = "MS PÉSÉVÉbÉN";    
     document.body.style.overflowX = "auto";
   }
 }
