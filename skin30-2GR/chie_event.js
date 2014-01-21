@@ -82,7 +82,12 @@ function clickEvent() {
       window.focus();
     }
     //レスジャンプ補正
-    if (obj.href.match(/^about|jumpres/)) {
+    try {
+      var objhref = obj.href;
+    } catch (err) {
+      return false;
+    }
+    if (objhref.match(/^about|jumpres/)) {
       var h = tohan(obj.innerText.replace(/[>＞]/g, ""));
       var anchor = document.anchors(anchorHead + h);
       if (anchor) {
@@ -116,16 +121,21 @@ function mouseOverEvent() {
         // ShiftJIS,EUC-JPのデコードは面倒だからつけない。
       }
     }
-    if (checkAnchor(e.href) == 2) {
+    try {
+      var check = checkAnchor(e.href);
+    } catch (err) {
+      return;
+    }
+    if (check == 2) {
       insButton(e);
       return;
-    } else if (checkAnchor(e.href) == 3) {
+    } else if (check == 3) {
       insYouTube(e,3);
       return;
-    } else if (checkAnchor(e.href) == 4) {
+    } else if (check == 4) {
       insYouTube(e,4);
       return;
-    } else if (checkAnchor(e.href) == 0) { // 逆参照ポップアップ
+    } else if (check == 0) { // 逆参照ポップアップ
       if (e.href.match(/menu:/)) {// && event.shiftKey) {alert("gyaku");
         searchPopup(e)
       }

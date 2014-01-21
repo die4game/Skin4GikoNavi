@@ -150,9 +150,14 @@ function setHash() {
         ddAnc[j].clearAttributes();
         continue;
       }
-      if (checkAnchor(ddAnc[j].href) == 0) {
+      try {
+        var check = checkAnchor(ddAnc[j].href);
+      } catch (e) {
+        check == 0
+      }
+      if (check == 0) {
         continue;
-      } else if (checkAnchor(ddAnc[j].href) == 1) {
+      } else if (check == 1) {
         var anc = tohan(ddAnc[j].innerText.replace(/[>ÅÑ]/g, ""));
         var start, end;
         if (anc.match(/(\d*)\D+(\d*)/)) {
@@ -632,7 +637,7 @@ function allBoardSearch (arg) {
       '<script type="text/javascript">' +
         'function submitEvent() {' +
           'var fo = document.forms[0];' +
-          'window.open("http://find.2ch.net/?TYPE=TITLE&BBS=ALL&ENCODING=SJIS&COUNT=50&STR="+fo.STR.value,"_blank");'+
+          'window.open("http://www.google.co.jp/cse/publicurl?cx=011159213634437911283:e3xlgrxpdpg&q="+fo.STR.value,"_blank");'+
           'window.close();'+
         '}' +
       '</script>' +
