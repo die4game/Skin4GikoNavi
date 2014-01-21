@@ -357,17 +357,19 @@ function changeAAmode () {
   var obj = getDTfromAnc(num);
   var aamodeWS = obj.nextSibling.style.whiteSpace;
   var aamodeZM = obj.nextSibling.style.zoom;
-  if (aamodeWS == "nowrap" && aamodeZM == 0.8) {
+  if (aamodeWS == "nowrap" && aamodeZM == 0.6) {
     obj.nextSibling.style.removeAttribute("whiteSpace");
     obj.nextSibling.style.removeAttribute("zoom");
     obj.nextSibling.style.removeAttribute("fontSize");
     obj.nextSibling.style.removeAttribute("fontFamily");
+    obj.nextSibling.style.removeAttribute("width");
     document.body.style.removeAttribute("overflowX");
   } else {
     obj.nextSibling.style.whiteSpace = "nowrap";
-    obj.nextSibling.style.zoom = 0.8;
+    obj.nextSibling.style.zoom = 0.6;
     obj.nextSibling.style.fontSize = "16px";
-    obj.nextSibling.style.fontFamily = "MS Pゴシック";    
+    obj.nextSibling.style.fontFamily = "MS Pゴシック";
+    obj.nextSibling.style.width = "200%";
     document.body.style.overflowX = "auto";
   }
 }
