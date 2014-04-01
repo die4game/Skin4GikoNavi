@@ -171,10 +171,7 @@ function openYouTube (btn, v) {
   if (!btn || !v) return false;
   switch (btn.value) {
   case "LOAD":
-    btn.insertAdjacentHTML('AfterEnd',
-    '<p><embed src="http://www.youtube.com/v/' + v +
-    '&rel=0&theme=light&hd=1&autohide=1&color=white&rel=0" type="application/x-shockwave-flash" width="480" height="270">' +
-    '</embed></p>');
+    btn.insertAdjacentHTML('AfterEnd', '<p><embed src="http://www.youtube.com/embed/' + v + '" width="480" height="270"></embed></p>');
     btn.value = 'CLOSE';
     break;
   case "CLOSE":
